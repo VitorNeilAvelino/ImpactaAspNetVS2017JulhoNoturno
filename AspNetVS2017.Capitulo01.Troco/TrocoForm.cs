@@ -27,6 +27,35 @@ namespace AspNetVS2017.Capitulo01.Troco
 
             //trocoTextBox.Text = Convert.ToString(troco);
             trocoTextBox.Text = troco.ToString("C", new CultureInfo("en-US"));
+
+            //ToDo: refatorar para usar vetor e for.
+
+            //var moedas1 = Convert.ToInt32(troco / 1);
+            var moedas1 = (int)troco;
+            //troco = troco - moedas1;
+            troco = troco % 1;
+
+            var moedas050 = (int)(troco / 0.5M);
+            troco %= 0.5m;
+
+            var moedas025 = (int)(troco / 0.25M);
+            troco %= 0.25m;
+
+            var moedas010 = (int)(troco / 0.1M);
+            troco %= 0.1m;
+
+            var moedas005 = (int)(troco / 0.05M);
+            troco %= 0.05m;
+
+            var moedas001 = (int)(troco / 0.01M);
+            troco %= 0.01m;
+
+            moedasListView.Items[0].Text = moedas1.ToString();
+            moedasListView.Items[1].Text = moedas050.ToString();
+            moedasListView.Items[2].Text = moedas025.ToString();
+            moedasListView.Items[3].Text = moedas010.ToString();
+            moedasListView.Items[4].Text = moedas005.ToString();
+            moedasListView.Items[5].Text = moedas001.ToString();            
         }
     }
 }
