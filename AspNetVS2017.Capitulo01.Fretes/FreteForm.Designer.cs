@@ -150,6 +150,7 @@
             this.limparButton.TabIndex = 11;
             this.limparButton.Text = "&Limpar";
             this.limparButton.UseVisualStyleBackColor = true;
+            this.limparButton.Click += new System.EventHandler(this.limparButton_Click);
             // 
             // FreteForm
             // 
