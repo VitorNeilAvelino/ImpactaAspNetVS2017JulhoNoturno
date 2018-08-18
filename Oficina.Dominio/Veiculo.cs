@@ -1,8 +1,10 @@
-﻿namespace Oficina.Dominio
+﻿using System;
+
+namespace Oficina.Dominio
 {
     public class Veiculo
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
         public string Placa { get; set; }
         public Modelo Modelo { get; set; }
         public int Ano { get; set; }
