@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<veiculos>
+  <Veiculo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>c0768a87-60f7-4c06-9909-7897c616e1ce</Id>
+    <Placa>ABC1234</Placa>
+    <Modelo>
+      <Id>3</Id>
+      <Nome>Fiesta</Nome>
+      <Marca>
+        <Id>2</Id>
+        <Nome>Ford</Nome>
+      </Marca>
+    </Modelo>
+    <Ano>2014</Ano>
+    <Cor>
+      <Id>2</Id>
+      <Nome>Preto</Nome>
+    </Cor>
+    <Combustivel>Flex</Combustivel>
+    <Cambio>Manual</Cambio>
+    <Observacao>Observação</Observacao>
+  </Veiculo>
+</veiculos>

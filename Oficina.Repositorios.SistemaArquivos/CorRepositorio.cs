@@ -8,7 +8,8 @@ namespace Oficina.Repositorios.SistemaArquivos
 {
     public class CorRepositorio
     {
-        private string _caminhoArquivo = ConfigurationManager.AppSettings["CaminhoArquivoCor"];
+        private string _caminhoArquivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, 
+            ConfigurationManager.AppSettings["CaminhoArquivoCor"]);
 
         public List<Cor> Selecionar()
         {

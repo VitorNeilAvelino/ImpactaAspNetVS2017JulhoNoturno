@@ -8,7 +8,8 @@ namespace Oficina.Repositorios.SistemaArquivos
 {
     public class MarcaRepositorio
     {
-        private string _caminhoArquivo = ConfigurationManager.AppSettings["CaminhoArquivoMarca"];
+        private string _caminhoArquivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+            ConfigurationManager.AppSettings["CaminhoArquivoMarca"]);
 
         public List<Marca> Selecionar()
         {

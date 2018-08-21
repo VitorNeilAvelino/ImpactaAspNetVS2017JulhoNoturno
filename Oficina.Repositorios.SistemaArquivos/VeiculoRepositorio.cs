@@ -13,8 +13,8 @@ namespace Oficina.Repositorios.SistemaArquivos
 {
     public class VeiculoRepositorio
     {
-        private string _caminhoArquivo =
-            ConfigurationManager.AppSettings["CaminhoArquivoVeiculo"];
+        private string _caminhoArquivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+            ConfigurationManager.AppSettings["CaminhoArquivoVeiculo"]);
 
         public void Inserir(Veiculo veiculo)
         {

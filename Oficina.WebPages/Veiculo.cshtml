@@ -1,17 +1,95 @@
-﻿@{
-    Layout = null;
-}
+﻿@using Oficina.WebPages
+@{ var _veiculoAplicacao = new VeiculoAplicacao(); }
 
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title></title>
+    <title>Cadastro de Veículos</title>
 </head>
 <body>
-    <div>
-    
-    </div>
+    @{ 
+        if (IsPost)
+        {
+            _veiculoAplicacao.Inserir();
+            Response.Redirect("Veiculo");
+        }
+    }
+    <h1>Cadastro de Veículos</h1>
+    <hr />
+    <form method="post">
+        <label for="marca">Marca</label>
+        <select name="marca" id="marca" onchange="obterModelos(this.value)">
+            <option value="">Selecione</option>
+            @foreach (var marca in _veiculoAplicacao.Marcas)
+            {
+                <option value="@marca.Id" selected="@Convert.ToBoolean(_veiculoAplicacao.MarcaSelecionada == marca.Id.ToString())">@marca.Nome</option>
+            }
+        </select>
+        <br />
+
+        <label for="modelo">Modelo</label>
+        <select name="modelo" id="marca">
+            <option value="">Selecione</option>
+            @foreach (var modelo in _veiculoAplicacao.Modelos)
+            {
+                <option value="@modelo.Id">@modelo.Nome</option>
+            }
+        </select>
+        <br />
+
+        <label for="placa">Placa</label>
+        <input type="text" name="placa" value="" />
+        <br />
+
+        <label for="ano">Ano</label>
+        <input type="text" name="ano" value="" />
+        <br />
+
+        <label for="cor">Cor</label>
+        <select name="cor" >
+            <option value="">Selecione</option>
+            @foreach (var cor in _veiculoAplicacao.Cores)
+            {
+                <option value="@cor.Id">@cor.Nome</option>
+            }
+        </select>
+        <br />
+
+        <label for="combustivel">Combustível</label>
+        <select name="combustivel" >
+            <option value="">Selecione</option>
+            @foreach (var combustivel in _veiculoAplicacao.Combustiveis)
+            {
+                <option value="@((int)combustivel)">@combustivel</option>
+            }
+        </select>
+        <br />
+
+        <label for="cambio">Câmbio</label>
+        <select name="cambio">
+            <option value="">Selecione</option>
+            @foreach (var cambio in _veiculoAplicacao.Cambios)
+            {
+                <option value="@((int)cambio)">@cambio</option>
+            }
+        </select>
+        <br />
+
+        <label for="observacao">Observação</label>
+        <br/>
+        <textarea name="observacao" rows="10" cols="40"></textarea>
+        <br />
+
+        <input type="submit" value="Gravar" />
+
+    </form>
+
+    <script type="text/javascript">
+        function obterModelos(marcaId) {
+            document.location.href = "Veiculo?marcaId=" + marcaId;
+        }
+    </script>
 </body>
 </html>
