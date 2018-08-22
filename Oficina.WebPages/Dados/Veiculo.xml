@@ -20,4 +20,24 @@
     <Cambio>Manual</Cambio>
     <Observacao>Observação</Observacao>
   </Veiculo>
+  <Veiculo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>698205fc-393c-4f31-9784-e466188aad5c</Id>
+    <Placa>ABC8899</Placa>
+    <Modelo>
+      <Id>1</Id>
+      <Nome>Mobi</Nome>
+      <Marca>
+        <Id>1</Id>
+        <Nome>Fiat</Nome>
+      </Marca>
+    </Modelo>
+    <Ano>2018</Ano>
+    <Cor>
+      <Id>1</Id>
+      <Nome>Amarelo</Nome>
+    </Cor>
+    <Combustivel>Gasolina</Combustivel>
+    <Cambio>Manual</Cambio>
+    <Observacao>1923</Observacao>
+  </Veiculo>
 </veiculos>
