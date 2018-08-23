@@ -7,36 +7,52 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Cadastro de Veículos</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
     <style type="text/css">
-        body{
+        body {
             font-size: 16px;
             font-family: "Roboto", sans-serif;
         }
-        
-        label{
+
+        label {
             min-width: 100px;
             display: inline-block;
         }
 
-        input, select{
+        input, select {
             min-width: 200px;
             min-height: 24px;
             margin-bottom: 5px;
         }
 
-        input[type=submit]{
-            width: 300px;
-        }
+            input[type=submit] {
+                width: 300px;
+            }
 
+        #mensagemErro {
+            height: 40px;
+            background-color: #dc3545;
+            margin-bottom: 10px;
+            color: white;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 40px;
+        }
     </style>
 </head>
-<body>
-    @{ 
+<body onload="exibirMensagem()">
+    @{
         if (IsPost)
         {
-            _veiculoAplicacao.Inserir();
-            Response.Redirect("Veiculo");
+            try
+            {
+                _veiculoAplicacao.Inserir();
+                Response.Redirect("Veiculo?mensagem=Veículo cadastrado com sucesso!");
+            }
+            catch
+            {
+                <div id="mensagemErro">@HttpContext.Current.Items["MensagemErro"]</div>
+            }
         }
     }
     <h1>Cadastro de Veículos</h1>
@@ -71,7 +87,7 @@
         <br />
 
         <label for="cor">Cor</label>
-        <select name="cor" >
+        <select name="cor">
             <option value="">Selecione</option>
             @foreach (var cor in _veiculoAplicacao.Cores)
             {
@@ -81,7 +97,7 @@
         <br />
 
         <label for="combustivel">Combustível</label>
-        <select name="combustivel" >
+        <select name="combustivel">
             <option value="">Selecione</option>
             @foreach (var combustivel in _veiculoAplicacao.Combustiveis)
             {
@@ -101,7 +117,7 @@
         <br />
 
         <label for="observacao">Observação</label>
-        <br/>
+        <br />
         <textarea name="observacao" rows="10" cols="40"></textarea>
         <br />
 
@@ -112,6 +128,16 @@
     <script type="text/javascript">
         function obterModelos(marcaId) {
             document.location.href = "Veiculo?marcaId=" + marcaId;
+        }
+
+        function exibirMensagem() {
+            const params = (new URL(document.location)).searchParams;
+            const mensagem = params.get("mensagem");
+
+            if (mensagem) { //undefined | null
+                alert(mensagem);
+                document.location.href = "Veiculo";
+            }
         }
     </script>
 </body>

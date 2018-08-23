@@ -40,4 +40,25 @@
     <Cambio>Manual</Cambio>
     <Observacao>1923</Observacao>
   </Veiculo>
+  <VeiculoPasseio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>e377340a-aead-4e40-96f2-43d05cb036ec</Id>
+    <Placa>ABC8899</Placa>
+    <Modelo>
+      <Id>1</Id>
+      <Nome>Mobi</Nome>
+      <Marca>
+        <Id>1</Id>
+        <Nome>Fiat</Nome>
+      </Marca>
+    </Modelo>
+    <Ano>2014</Ano>
+    <Cor>
+      <Id>1</Id>
+      <Nome>Amarelo</Nome>
+    </Cor>
+    <Combustivel>Flex</Combustivel>
+    <Cambio>Automatico</Cambio>
+    <Observacao>2139</Observacao>
+    <Carroceria>Hatch</Carroceria>
+  </VeiculoPasseio>
 </veiculos>
