@@ -26,7 +26,7 @@ namespace Oficina.Repositorios.SistemaArquivos.Tests
             veiculo.Placa = "ABC1234";
             veiculo.Carroceria = TipoCarroceria.Hatch;
 
-            new VeiculoRepositorio().Inserir(veiculo);
+            new VeiculoRepositorio().Inserir("Rafa");
         }
     }
 }

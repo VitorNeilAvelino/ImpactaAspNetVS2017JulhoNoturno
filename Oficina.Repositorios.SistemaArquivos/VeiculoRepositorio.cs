@@ -16,7 +16,7 @@ namespace Oficina.Repositorios.SistemaArquivos
         private string _caminhoArquivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
             ConfigurationManager.AppSettings["CaminhoArquivoVeiculo"]);
 
-        public void Inserir<T>(T veiculo) where T: Veiculo
+        public void Inserir<T>(T veiculo) //where T: Veiculo
         {
             var arquivoXml = XDocument.Load(_caminhoArquivo);
 
