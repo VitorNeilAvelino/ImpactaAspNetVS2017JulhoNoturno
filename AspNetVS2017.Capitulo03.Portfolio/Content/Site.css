@@ -22,3 +22,9 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.img-responsive{
+    float: left;
+    height: 190px;
+    padding: 5px;
+}
