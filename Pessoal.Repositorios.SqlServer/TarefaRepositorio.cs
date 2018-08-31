@@ -12,8 +12,18 @@ namespace Pessoal.Repositorios.SqlServer
 {
     public class TarefaRepositorio
     {
-        private string _stringConexao =
+        private string _stringConexao;
+
+        public TarefaRepositorio()
+        {
+            _stringConexao =
             ConfigurationManager.ConnectionStrings["pessoalConnectionString"].ConnectionString;
+        }
+
+        public TarefaRepositorio(string stringConexao)
+        {
+            _stringConexao = stringConexao;
+        }
 
         public int Inserir(Tarefa tarefa)
         {
@@ -78,6 +88,53 @@ namespace Pessoal.Repositorios.SqlServer
             }
 
             return tarefas;
+        }
+
+        public Tarefa Selecionar(int id)
+        {
+            Tarefa tarefa = null;
+
+            using (var conexao = new SqlConnection(_stringConexao))
+            {
+                conexao.Open();
+
+                using (var comando = new SqlCommand("TarefaSelecionar", conexao))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@Id", id);
+
+                    using (var registro = comando.ExecuteReader())
+                    {
+                        if (registro.Read())
+                        {
+                            tarefa = Mapear(registro);
+                        }
+                    }
+                }
+
+                //conexao.Close();
+            }
+
+            return tarefa;
+        }
+
+        public void Excluir(int id)
+        {
+            using (var conexao = new SqlConnection(_stringConexao))
+            {
+                conexao.Open();
+
+                using (var comando = new SqlCommand("TarefaExcluir", conexao))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    comando.Parameters.AddWithValue("@id", id);
+
+                    comando.ExecuteNonQuery();
+                }
+
+                //conexao.Close();
+            }
         }
 
         private Tarefa Mapear(SqlDataReader registro)

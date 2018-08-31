@@ -33,7 +33,26 @@ namespace Pessoal.Repositorios.SqlServer.Tests
         [TestMethod()]
         public void AtualizarTest()
         {
-            Assert.Fail();
+            var tarefa = _tarefaRepositorio.Selecionar().First();
+
+            tarefa.Concluida = true;
+            tarefa.Nome = "Roupa passada";
+            tarefa.Observacoes = "Obs";
+            tarefa.Prioridade = Prioridade.Baixa;
+
+            _tarefaRepositorio.Atualizar(tarefa);
+        }
+
+        [TestMethod()]
+        public void ExcluirTest()
+        {
+            _tarefaRepositorio.Excluir(6);
+
+            var tarefaExcluida = _tarefaRepositorio.Selecionar(6);
+            var tarefa = _tarefaRepositorio.Selecionar(5);
+
+            Assert.IsNull(tarefaExcluida);
+            Assert.IsNotNull(tarefa);
         }
     }
 }
