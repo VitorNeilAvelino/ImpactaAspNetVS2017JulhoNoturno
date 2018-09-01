@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 08/30/2018 22:29:11
+-- Date Created: 08/31/2018 19:17:19
 -- Generated from EDMX file: C:\Users\vavelino\source\repos\ImpactaAspNetVS2017\AspNetVS2017.Capitulo08.ModelDatabaseFirst\LojaModel.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,38 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_CategoriaProduto]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Produto] DROP CONSTRAINT [FK_CategoriaProduto];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CategoriaFornecedor_Categoria]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CategoriaFornecedor] DROP CONSTRAINT [FK_CategoriaFornecedor_Categoria];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CategoriaFornecedor_Fornecedor]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CategoriaFornecedor] DROP CONSTRAINT [FK_CategoriaFornecedor_Fornecedor];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ProdutoProdutoImagem]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProdutoImagem] DROP CONSTRAINT [FK_ProdutoProdutoImagem];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Produto]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Produto];
+GO
+IF OBJECT_ID(N'[dbo].[Categoria]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Categoria];
+GO
+IF OBJECT_ID(N'[dbo].[Fornecedor]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Fornecedor];
+GO
+IF OBJECT_ID(N'[dbo].[ProdutoImagem]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ProdutoImagem];
+GO
+IF OBJECT_ID(N'[dbo].[CategoriaFornecedor]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CategoriaFornecedor];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
