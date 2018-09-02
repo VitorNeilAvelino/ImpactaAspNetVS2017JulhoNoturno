@@ -1,12 +1,8 @@
 ﻿using Loja.Dominio;
+using Loja.Repositorios.SqlServer.Migrations;
 using Loja.Repositorios.SqlServer.ModelConfiguration;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Loja.Repositorios.SqlServer
 {
@@ -16,7 +12,9 @@ namespace Loja.Repositorios.SqlServer
     {
         public LojaDbContext() : base("lojaConnectionString")
         {
+            //Database.SetInitializer(new LojaDbInitializer());
 
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<LojaDbContext, Configuration>());
         }
 
         public DbSet<Produto> Produtos { get; set; }

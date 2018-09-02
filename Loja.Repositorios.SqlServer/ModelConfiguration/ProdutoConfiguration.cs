@@ -13,6 +13,12 @@ namespace Loja.Repositorios.SqlServer.ModelConfiguration
 
             Property(p => p.Preco)
                 .HasPrecision(9, 2);
+
+            HasRequired(p => p.Categoria);
+
+            //Property(p => p.Ativo).HasDefaultValue(true);
+
+            //Ignore(p => p.Descontinuado);
         }
     }
 }

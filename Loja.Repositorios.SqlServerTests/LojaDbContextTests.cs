@@ -68,7 +68,7 @@ namespace Loja.Repositorios.SqlServer.Tests
         {
             //Linq
             var caneta = db.Produtos
-                .FirstOrDefault(produto => produto.Nome == "Caneta");
+                .FirstOrDefault(produto => produto.Nome == "Camiseta");
             //.Where(produto => produto.Nome == "Caneta").ToList();
 
             caneta.Preco = 22.32m;

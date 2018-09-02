@@ -48,6 +48,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LojaDbContext.cs" />
+    <Compile Include="LojaDbInitializer.cs" />
+    <Compile Include="Migrations\201809022031023_InitialCreate.cs" />
+    <Compile Include="Migrations\201809022031023_InitialCreate.Designer.cs">
+      <DependentUpon>201809022031023_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809022050316_ProdutoCategoriaRequerida.cs" />
+    <Compile Include="Migrations\201809022050316_ProdutoCategoriaRequerida.Designer.cs">
+      <DependentUpon>201809022050316_ProdutoCategoriaRequerida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809022111206_ProdutoAddQRCode.cs" />
+    <Compile Include="Migrations\201809022111206_ProdutoAddQRCode.Designer.cs">
+      <DependentUpon>201809022111206_ProdutoAddQRCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelConfiguration\CategoriaConfiguration.cs" />
     <Compile Include="ModelConfiguration\ProdutoConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,6 +75,17 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201809022031023_InitialCreate.resx">
+      <DependentUpon>201809022031023_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809022050316_ProdutoCategoriaRequerida.resx">
+      <DependentUpon>201809022050316_ProdutoCategoriaRequerida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809022111206_ProdutoAddQRCode.resx">
+      <DependentUpon>201809022111206_ProdutoAddQRCode.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
