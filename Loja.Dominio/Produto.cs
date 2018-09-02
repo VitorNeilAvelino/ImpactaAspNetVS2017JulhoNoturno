@@ -12,6 +12,6 @@
         public bool Ativo { get; set; } = true;
         public string QRCode { get; set; }
 
-        public Categoria Categoria { get; set; }
+        public virtual Categoria Categoria { get; set; }
     }
 }
