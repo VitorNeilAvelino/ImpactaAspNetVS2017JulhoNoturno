@@ -103,6 +103,14 @@ namespace Loja.Mvc.Controllers
             return RedirectToAction("Index");
         }
 
+        [ActionName("Categoria")]
+        public JsonResult ObterProdutoPorCategoria(int? categoriaId)
+        {
+            return Json(db.Produtos
+                .Where(p => p.Categoria.Id == categoriaId)
+                .ToList(), JsonRequestBehavior.AllowGet);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

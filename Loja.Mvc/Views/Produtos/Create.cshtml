@@ -7,10 +7,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>ProdutoViewModel</h4>
         <hr />
@@ -26,7 +26,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CategoriaId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.CategoriaId, Model.Categorias, "Selecione", new { @class = "form-control" } )
+                @Html.DropDownListFor(model => model.CategoriaId, Model.Categorias, "Selecione",
+               new { @class = "form-control d-inline" })
+                <button type="button" id="pesquisarButton" data-toggle="popover" class="btn btn-default">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
                 @Html.ValidationMessageFor(model => model.CategoriaId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -71,4 +75,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="~/Scripts/Produtos/create.js"></script>
 }
