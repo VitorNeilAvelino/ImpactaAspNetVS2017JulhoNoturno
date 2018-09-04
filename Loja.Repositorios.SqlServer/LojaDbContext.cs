@@ -1,4 +1,5 @@
 ﻿using Loja.Dominio;
+using Loja.Repositorios.SqlServer.Migrations;
 using Loja.Repositorios.SqlServer.ModelConfiguration;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,16 @@ namespace Loja.Repositorios.SqlServer
     {
         public LojaDbContext() : base("lojaConnectionString")
         {
+            //pag 191
+            //Database.SetInitializer(new LojaDbInitializer());
+            //1. Enable-Migrations
+            //2. Update-Database
+            //3. Database.SetInitializer abaixo
+            Database.SetInitializer(
+                new MigrateDatabaseToLatestVersion<LojaDbContext, Configuration>());
 
+            //4. Add-Migration
+            //5. Update-Database
         }
 
         public DbSet<Produto> Produtos { get; set; }
