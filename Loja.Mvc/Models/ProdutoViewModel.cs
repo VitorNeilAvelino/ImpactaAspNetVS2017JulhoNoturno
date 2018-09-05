@@ -25,7 +25,7 @@ namespace Loja.Mvc.Models
         [Display(Name = "Categoria")]
         public string CategoriaNome { get; set; }
 
-        public List<SelectListItem> Categorias { get; set; }
+        public List<SelectListItem> Categorias { get; set; } = new List<SelectListItem>();
 
         [Required]
         public decimal Preco { get; set; }

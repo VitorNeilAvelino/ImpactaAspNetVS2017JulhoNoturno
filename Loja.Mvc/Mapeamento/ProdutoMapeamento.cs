@@ -30,6 +30,7 @@ namespace Loja.Mvc.Mapeamento
             produto.Nome = viewModel.Nome;
             produto.Preco = viewModel.Preco;
             produto.Ativo = viewModel.Ativo;
+            produto.Descricao = viewModel.Descricao;
 
             return produto;
         }

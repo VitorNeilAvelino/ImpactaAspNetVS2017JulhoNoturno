@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using Loja.Dominio;
 using Loja.Repositorios.SqlServer;
 using Loja.Mvc.Mapeamento;
+using Loja.Mvc.Models;
 
 namespace Loja.Mvc.Controllers
 {
@@ -21,11 +22,6 @@ namespace Loja.Mvc.Controllers
         public ActionResult Index()
         {
             return View(produtoMap.Mapear(db.Produtos.ToList()));
-        }
-
-        private void MeuFazer(int valor)
-        {
-            throw new NotImplementedException();
         }
 
         // GET: Produtos/Details/5
@@ -46,7 +42,7 @@ namespace Loja.Mvc.Controllers
         // GET: Produtos/Create
         public ActionResult Create()
         {
-            return View();
+            return View(produtoMap.Mapear(new Produto(), db.Categorias.ToList()));
         }
 
         // POST: Produtos/Create
@@ -54,16 +50,16 @@ namespace Loja.Mvc.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Descricao,Preco,Estoque,Ativo")] Produto produto)
+        public ActionResult Create(ProdutoViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                db.Produtos.Add(produto);
+                db.Produtos.Add(produtoMap.Mapear(viewModel, db));
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(produto);
+            return View(viewModel);
         }
 
         // GET: Produtos/Edit/5
@@ -121,6 +117,14 @@ namespace Loja.Mvc.Controllers
             db.Produtos.Remove(produto);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [ActionName("Categoria")]
+        public  JsonResult ObterProdutoPorCategoria(int categoriaId)
+        {
+            return Json(db.Produtos
+                .Where(x => x.Categoria.Id == categoriaId).ToList(),
+                JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)
