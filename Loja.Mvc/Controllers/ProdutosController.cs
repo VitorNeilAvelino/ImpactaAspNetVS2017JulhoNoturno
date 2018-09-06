@@ -21,6 +21,8 @@ namespace Loja.Mvc.Controllers
         // GET: Produtos
         public ActionResult Index()
         {
+            //throw new Exception("Teste");
+
             return View(produtoMap.Mapear(db.Produtos.ToList()));
         }
 
