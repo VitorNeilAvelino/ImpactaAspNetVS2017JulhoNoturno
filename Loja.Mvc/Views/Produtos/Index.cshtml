@@ -1,14 +1,19 @@
-﻿@model IEnumerable<Loja.Mvc.Models.ProdutoViewModel>
+﻿@using Loja.Recursos;
+@model IEnumerable<Loja.Mvc.Models.ProdutoViewModel>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>@Literais.NomeModuloProduto</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@if (User.IsInRole("Vendedor") || User.IsInRole("Despachante"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>

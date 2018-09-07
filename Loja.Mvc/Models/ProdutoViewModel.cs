@@ -12,6 +12,7 @@ namespace Loja.Mvc.Models
         public int Id { get; set; }
 
         [Required]
+        [Display(Name = nameof(Recursos.Literais.NomeProdutoLabel), ResourceType = typeof(Recursos.Literais))]
         public string Nome { get; set; }
 
         [Required]
@@ -28,6 +29,7 @@ namespace Loja.Mvc.Models
         public List<SelectListItem> Categorias { get; set; } = new List<SelectListItem>();
 
         [Required]
+        [DataType(DataType.Currency)]
         public decimal Preco { get; set; }
 
         [Required]

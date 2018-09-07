@@ -10,15 +10,17 @@ using Loja.Dominio;
 using Loja.Repositorios.SqlServer;
 using Loja.Mvc.Mapeamento;
 using Loja.Mvc.Models;
+using Loja.Mvc.Filtros;
 
 namespace Loja.Mvc.Controllers
 {
+    [Authorize]
     public class ProdutosController : Controller
     {
         private LojaDbContext db = new LojaDbContext();
         private ProdutoMapeamento produtoMap = new ProdutoMapeamento();
 
-        // GET: Produtos
+        [AllowAnonymous]
         public ActionResult Index()
         {
             //throw new Exception("Teste");
@@ -110,7 +112,9 @@ namespace Loja.Mvc.Controllers
             return View(produto);
         }
 
-        // POST: Produtos/Delete/5
+        //[Authorize(Roles = Perfil.Deus)]
+        [Authorize(Roles = "Deus")]
+        [AuthorizeRole(Perfil.Deus, Perfil.Admin)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -122,7 +126,7 @@ namespace Loja.Mvc.Controllers
         }
 
         [ActionName("Categoria")]
-        public  JsonResult ObterProdutoPorCategoria(int categoriaId)
+        public JsonResult ObterProdutoPorCategoria(int categoriaId)
         {
             return Json(db.Produtos
                 .Where(x => x.Categoria.Id == categoriaId).ToList(),

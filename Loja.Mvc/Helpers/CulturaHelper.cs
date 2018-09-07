@@ -52,5 +52,15 @@ namespace Loja.Mvc.Helpers
 
             HttpContext.Current.Response.Cookies.Add(cookie);
         }
+
+        public static CultureInfo ObterCultureInfo()
+        {
+            var linguagemSelecionada =
+                HttpContext.Current.Request.Cookies["LinguagemSelecionada"]?.Value;
+
+            var linguagem = linguagemSelecionada ?? LinguagemPadrao;
+
+            return CultureInfo.CreateSpecificCulture(linguagem);
+        }
     }
 }

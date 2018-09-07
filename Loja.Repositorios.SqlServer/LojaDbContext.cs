@@ -1,19 +1,15 @@
 ﻿using Loja.Dominio;
 using Loja.Repositorios.SqlServer.Migrations;
 using Loja.Repositorios.SqlServer.ModelConfiguration;
-using System;
-using System.Collections.Generic;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Loja.Repositorios.SqlServer
 {
     // Design pattern: Unit of work
     // Martin Fowler -  padrões de arquitetura de aplicações corporativas
-    public class LojaDbContext : DbContext
+    public class LojaDbContext : IdentityDbContext<Usuario>
     {
         public LojaDbContext() : base("lojaConnectionString")
         {
