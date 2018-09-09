@@ -2,6 +2,7 @@
 using Loja.Repositorios.SqlServer.Migrations;
 using Loja.Repositorios.SqlServer.ModelConfiguration;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
@@ -23,6 +24,11 @@ namespace Loja.Repositorios.SqlServer
 
             //4. Add-Migration
             //5. Update-Database
+        }
+
+        public static LojaDbContext Create()
+        {
+            return new LojaDbContext();
         }
 
         public DbSet<Produto> Produtos { get; set; }
