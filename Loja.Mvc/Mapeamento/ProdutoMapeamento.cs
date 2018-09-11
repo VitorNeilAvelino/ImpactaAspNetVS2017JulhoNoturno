@@ -21,7 +21,7 @@ namespace Loja.Mvc.Mapeamento
             return produtosViewModel;
         }
 
-        public Produto Mapear(ProdutoViewModel viewModel, LojaDbContext dbContext)
+        public Produto Mapear(ProdutoViewModel viewModel, Repositorios.SqlServer.LojaDbContext dbContext)
         {
             var produto = new Produto();
 
@@ -59,7 +59,7 @@ namespace Loja.Mvc.Mapeamento
             return viewModel;
         }
 
-        public void Mapear(ProdutoViewModel viewModel, Produto produto, LojaDbContext dbContext)
+        public void Mapear(ProdutoViewModel viewModel, Produto produto, Repositorios.SqlServer.LojaDbContext dbContext)
         {
             dbContext.Entry(produto).CurrentValues.SetValues(viewModel);
 

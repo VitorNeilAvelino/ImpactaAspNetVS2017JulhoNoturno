@@ -11,13 +11,14 @@ using Loja.Repositorios.SqlServer;
 using Loja.Mvc.Mapeamento;
 using Loja.Mvc.Models;
 using Loja.Mvc.Filtros;
+using System.Security.Claims;
 
 namespace Loja.Mvc.Controllers
 {
     [Authorize]
     public class ProdutosController : Controller
     {
-        private LojaDbContext db = new LojaDbContext();
+        private Repositorios.SqlServer.LojaDbContext db = new Repositorios.SqlServer.LojaDbContext();
         private ProdutoMapeamento produtoMap = new ProdutoMapeamento();
 
         [AllowAnonymous]
@@ -104,12 +105,19 @@ namespace Loja.Mvc.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            if (!((ClaimsIdentity)User.Identity).HasClaim(c => c.Type == "Produto" && 
+                c.Value.Contains("|Excluir|")))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             Produto produto = db.Produtos.Find(id);
             if (produto == null)
             {
                 return HttpNotFound();
             }
-            return View(produto);
+            return View(produtoMap.Mapear(produto));
         }
 
         //[Authorize(Roles = Perfil.Deus)]

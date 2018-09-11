@@ -1,4 +1,6 @@
 ﻿@using Loja.Recursos;
+@using System.Security.Claims;
+
 @model IEnumerable<Loja.Mvc.Models.ProdutoViewModel>
 
 @{
@@ -60,7 +62,13 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            
+            @*@if (((ClaimsIdentity)User.Identity).HasClaim("Produto", "Excluir"))*@
+            @if (((ClaimsIdentity)User.Identity).HasClaim(c => c.Type == "Produto" && c.Value.Contains("|Excluir|")))
+            {
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            }
+
         </td>
     </tr>
 }

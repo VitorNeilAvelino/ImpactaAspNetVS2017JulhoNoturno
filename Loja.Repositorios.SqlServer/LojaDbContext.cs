@@ -28,6 +28,11 @@ namespace Loja.Repositorios.SqlServer
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
 
+        public static LojaDbContext Create()
+        {
+            return new LojaDbContext();
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

@@ -69,6 +69,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loja.Recursos", "Loja.Recur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Login.Mvc", "Login.Mvc\Login.Mvc.csproj", "{63808F75-2D4E-4905-BBF7-58DE82EED9E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.WebApi", "Northwind.WebApi\Northwind.WebApi.csproj", "{5C887791-6C97-4CFC-9944-DB83449F72C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -188,6 +190,10 @@ Global
 		{63808F75-2D4E-4905-BBF7-58DE82EED9E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63808F75-2D4E-4905-BBF7-58DE82EED9E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63808F75-2D4E-4905-BBF7-58DE82EED9E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C887791-6C97-4CFC-9944-DB83449F72C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C887791-6C97-4CFC-9944-DB83449F72C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C887791-6C97-4CFC-9944-DB83449F72C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C887791-6C97-4CFC-9944-DB83449F72C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -213,6 +219,7 @@ Global
 		{0575195C-59D1-4B5C-BCB6-0181845FDBDA} = {E177A726-F149-45DD-9717-906F3ADCDCD4}
 		{7D98F7FE-F4EB-4271-B09F-B398E2E297A6} = {E177A726-F149-45DD-9717-906F3ADCDCD4}
 		{63808F75-2D4E-4905-BBF7-58DE82EED9E5} = {E177A726-F149-45DD-9717-906F3ADCDCD4}
+		{5C887791-6C97-4CFC-9944-DB83449F72C9} = {4B9C7CBF-2CFB-4A44-A23D-92E68934B270}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {963514C4-F551-4EE8-82FD-2959D4E9C4AA}
