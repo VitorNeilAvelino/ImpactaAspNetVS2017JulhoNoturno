@@ -10,12 +10,19 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Northwind.Repositorios.SqlServer;
+using System.Web.Http.Cors;
 
 namespace Northwind.WebApi.Controllers
 {
+    //[EnableCorsAttribute("*", "*", "Post")]
     public class ProductsController : ApiController
     {
         private NorthwindDbContext db = new NorthwindDbContext();
+
+        public ProductsController()
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+        }
 
         // GET: api/Products
         public List<Product> GetProducts()
@@ -34,6 +41,23 @@ namespace Northwind.WebApi.Controllers
             }
 
             return Ok(product);
+        }
+
+        [Route("api/products/{productId}/supplier")]
+        public async Task<IHttpActionResult> GetProductSupplier(int productId)
+        {
+            var fornecedor = await db.Products
+                .Include(p => p.Supplier)
+                .Where(p => p.ProductID == productId)
+                .Select(p => p.Supplier)
+                .SingleOrDefaultAsync();
+
+            if (fornecedor == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(fornecedor);
         }
 
         // PUT: api/Products/5
