@@ -52,7 +52,7 @@ namespace Loja.Mvc.Mapeamento
 
             viewModel.Estoque = produto.Estoque;
             viewModel.Id = produto.Id;
-            viewModel.Nome = produto.Nome;
+            viewModel.Nome = "dsfasdf";
             viewModel.Preco = produto.Preco;
             viewModel.Ativo = produto.Ativo;
 

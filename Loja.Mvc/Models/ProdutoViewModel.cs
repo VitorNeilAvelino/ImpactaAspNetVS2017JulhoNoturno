@@ -13,7 +13,7 @@ namespace Loja.Mvc.Models
 
         [Required]
         [Display(Name = nameof(Recursos.Literais.NomeProdutoLabel), ResourceType = typeof(Recursos.Literais))]
-        public string Nome { get; set; }
+        public string Nome { get; set; } = "asdfsad";
 
         [Required]
         public string Descricao { get; set; }

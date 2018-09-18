@@ -43,7 +43,13 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Nome)
+                @*@Html.DisplayForModel("Nome")*@
+                @Html.DisplayText("Nome")
+                @*@Html.DisplayText("Model.Nome")*@
+                @*@Html.DisplayTextFor(m => item.Nome)*@
+                @*@Html.DisplayFor(m => item.Nome)*@
+                @*@Html.Display("Nome")*@
+                @*@Html.Raw(item.Nome + "pt_Br")*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Descricao)
